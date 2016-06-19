@@ -122,7 +122,7 @@ public class EnchantmentAPI extends JavaPlugin {
         getModuleForClass(RootConfig.class).reload();
 
         // Listeners
-        new EListener(this);
+     //   new EListener(this);
         if (getModuleForClass(RootConfig.class).getBoolean(RootNode.ANVIL_ENABLED))
         {
             new AnvilListener(this);
@@ -402,6 +402,17 @@ public class EnchantmentAPI extends JavaPlugin {
                 return true;
         }
         return false;
+    }
+
+    public static int getItemEnchantmentLevel(ItemStack item, String enchantmentName) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) return 0;
+        if (!meta.hasLore()) return 0;
+        for (String lore : meta.getLore()) {
+            if (lore.contains(enchantmentName))
+                return ENameParser.parseLevel(lore);
+        }
+        return (0);
     }
 
     /**

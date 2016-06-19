@@ -1,13 +1,12 @@
-package com.rit.sucy.Anvil.v1_8_3;
+package com.rit.sucy.Anvil;
 
-import com.rit.sucy.Anvil.AnvilView;
-import net.minecraft.server.v1_8_R2.EntityPlayer;
-import net.minecraft.server.v1_8_R2.ContainerAnvil;
-import net.minecraft.server.v1_8_R2.IInventory;
+import net.minecraft.server.v1_10_R1.ContainerAnvil;
+import net.minecraft.server.v1_10_R1.EntityPlayer;
+import net.minecraft.server.v1_10_R1.IInventory;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_8_R2.inventory.CraftInventoryAnvil;
-import org.bukkit.craftbukkit.v1_8_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftInventoryAnvil;
+import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -29,17 +28,18 @@ public class MainAnvil implements AnvilView
         this.player = player;
         this.plugin = plugin;
 
-        CraftPlayer craftPlayer = (CraftPlayer)player;
-        inv = (CraftInventoryAnvil)anvil;
+        CraftPlayer craftPlayer = (CraftPlayer) player;
+        inv = (CraftInventoryAnvil) anvil;
         final EntityPlayer nmsPlayer = craftPlayer.getHandle();
         final MainAnvil main = this;
-        plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable()
-        {
-            @Override
-            public void run()
+        plugin.getServer().getScheduler().runTaskLater(
+            plugin, new Runnable()
             {
-                main.anvil = (ContainerAnvil)nmsPlayer.activeContainer;
-            }
+                @Override
+                public void run()
+                {
+                    main.anvil = (ContainerAnvil) nmsPlayer.activeContainer;
+                }
         }, 0);
 
     }
@@ -52,7 +52,7 @@ public class MainAnvil implements AnvilView
     public String getNameText() {
         try {
             // Make sure the item doesn't have a unique name
-            for (net.minecraft.server.v1_8_R2.ItemStack item : inv.getIngredientsInventory().getContents())
+            for (net.minecraft.server.v1_10_R1.ItemStack item : inv.getIngredientsInventory().getContents())
             {
                 ItemStack i = CraftItemStack.asBukkitCopy(item);
                 if (i.hasItemMeta() && i.getItemMeta().hasDisplayName() && !i.getItemMeta().getDisplayName().equals(ChatColor.stripColor(i.getItemMeta().getDisplayName())))
@@ -71,7 +71,7 @@ public class MainAnvil implements AnvilView
             // More gross (Reflection to obtain the first item)
             Field g = ContainerAnvil.class.getDeclaredField("h");
             g.setAccessible(true);
-            net.minecraft.server.v1_8_R2.ItemStack item = ((IInventory)g.get(anvil)).getItem(0);
+            net.minecraft.server.v1_10_R1.ItemStack item = ((IInventory)g.get(anvil)).getItem(0);
             if (item == null)
                 return null;
 

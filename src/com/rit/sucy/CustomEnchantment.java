@@ -7,7 +7,7 @@ import com.rit.sucy.service.ERomanNumeral;
 import com.rit.sucy.service.MaterialClass;
 import com.rit.sucy.service.MaterialsParser;
 import com.sun.istack.internal.NotNull;
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

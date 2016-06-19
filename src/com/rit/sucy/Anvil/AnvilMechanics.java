@@ -139,7 +139,7 @@ public class AnvilMechanics {
         }
 
         // Add in the number of enchants cost and return the result
-        return cost + (int)((count + 1) * (count / 2.0) + 0.5);
+        return cost + (int)(((count + 1) * (count / 2.0) + 0.5));
     }
 
     /**
