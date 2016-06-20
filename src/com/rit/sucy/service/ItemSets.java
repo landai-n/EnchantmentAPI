@@ -81,6 +81,51 @@ public enum ItemSets {
             Material.BOW
     }),
 
+    ALL (new Material[] {
+            Material.WOOD_SWORD,
+            Material.STONE_SWORD,
+            Material.IRON_SWORD,
+            Material.GOLD_SWORD,
+            Material.DIAMOND_SWORD,
+            Material.WOOD_AXE,
+            Material.STONE_AXE,
+            Material.IRON_AXE,
+            Material.GOLD_AXE,
+            Material.DIAMOND_AXE,
+            Material.WOOD_SPADE,
+            Material.STONE_SPADE,
+            Material.IRON_SPADE,
+            Material.GOLD_SPADE,
+            Material.DIAMOND_SPADE,
+            Material.WOOD_PICKAXE,
+            Material.STONE_PICKAXE,
+            Material.IRON_PICKAXE,
+            Material.GOLD_PICKAXE,
+            Material.DIAMOND_PICKAXE,
+            Material.LEATHER_CHESTPLATE,
+            Material.CHAINMAIL_CHESTPLATE,
+            Material.IRON_CHESTPLATE,
+            Material.GOLD_CHESTPLATE,
+            Material.DIAMOND_CHESTPLATE,
+            Material.LEATHER_HELMET,
+            Material.CHAINMAIL_HELMET,
+            Material.IRON_HELMET,
+            Material.GOLD_HELMET,
+            Material.DIAMOND_HELMET,
+            Material.LEATHER_LEGGINGS,
+            Material.CHAINMAIL_LEGGINGS,
+            Material.IRON_LEGGINGS,
+            Material.GOLD_LEGGINGS,
+            Material.DIAMOND_LEGGINGS,
+            Material.LEATHER_BOOTS,
+            Material.CHAINMAIL_BOOTS,
+            Material.IRON_BOOTS,
+            Material.GOLD_BOOTS,
+            Material.DIAMOND_BOOTS,
+            Material.BOW,
+            Material.FISHING_ROD
+    })
+
     ;
 
     private final Material[] items;

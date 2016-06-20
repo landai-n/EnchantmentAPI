@@ -27,6 +27,7 @@ public enum SuffixGroups {
     TRAP ("trap"),
     WEAKNESS ("weakness"),
     WITHER ("wither"),
+    MENDING ("mending")
     ;
 
     private final String key;

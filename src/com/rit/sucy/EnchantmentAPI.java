@@ -122,7 +122,7 @@ public class EnchantmentAPI extends JavaPlugin {
         getModuleForClass(RootConfig.class).reload();
 
         // Listeners
-     //   new EListener(this);
+        new EListener(this);
         if (getModuleForClass(RootConfig.class).getBoolean(RootNode.ANVIL_ENABLED))
         {
             new AnvilListener(this);

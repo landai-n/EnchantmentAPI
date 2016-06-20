@@ -82,7 +82,8 @@ public class TableTask extends BukkitRunnable {
     /**
      * Runs the task, updating the enchantment table
      */
-    public void run() {
+    public void run()
+    {
         InventoryView view = player.getOpenInventory();
         if (view == null) {
             cancel();
@@ -98,37 +99,9 @@ public class TableTask extends BukkitRunnable {
         }
         if (inv.getItem() != null && inv.getItem().getType() != Material.AIR && placeholder == null) {
             stored = inv.getItem().clone();
-            placeholder = createPlaceholder(inv.getItem(), stored);
-            inv.setItem(0, placeholder);
             placeholder = inv.getItem();
+            inv.setItem(0, inv.getItem());
         }
-    }
-
-    /**
-     * Creates a placeholder for the provided item
-     *
-     * @param item       item to modify
-     * @param storedItem original item
-     */
-    private ItemStack createPlaceholder(ItemStack item, ItemStack storedItem) {
-        if (canEnchant(item)) {
-            item.setType(p.getType());
-            item.setItemMeta(p.getItemMeta());
-        }
-        else {
-            item.setType(p2.getType());
-            item.setItemMeta(p2.getItemMeta());
-        }
-        item.setAmount(1);
-        List<String> lore = item.getItemMeta().getLore();
-        if (storedItem.hasItemMeta() && storedItem.getItemMeta().hasDisplayName())
-            lore.add(storedItem.getItemMeta().getDisplayName());
-        else
-            lore.add(ChatColor.GRAY + storedItem.getType().name().toLowerCase().replace("_", " "));
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-        return item;
     }
 
     /**

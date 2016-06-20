@@ -31,7 +31,6 @@ public enum VanillaData
             new String[] { SuffixGroups.BREATHING.getKey() }, 2,  10, 10, 3),
     THORNS(Enchantment.THORNS, ItemSets.CHESTPLATES.getItems(),
             new String[] { SuffixGroups.STRENGTH.getKey() }, 1,  10, 20, 3),
-
     /**
      * WEAPONS
      */
@@ -71,6 +70,9 @@ public enum VanillaData
             new String[] { SuffixGroups.FORCE.getKey() }, 2, 12, 20, 2),
     ARROW_INFINITE(Enchantment.ARROW_INFINITE, ItemSets.BOW.getItems(),
             new String[] { SuffixGroups.PROJECTILE.getKey(), SuffixGroups.DURABILITY.getKey() }, 1, 20, 20, 1),
+
+    MENDING(Enchantment.MENDING, ItemSets.ALL.getItems(),
+            new String[] { SuffixGroups.MENDING.getKey(), SuffixGroups.MENDING.getKey() }, 1, 5, 10, 1),
     ;
     /**
      * The Enchantment id in the vanilla game

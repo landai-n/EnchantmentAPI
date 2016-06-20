@@ -54,7 +54,7 @@ public class EEnchantTable {
         List<CustomEnchantment> validEnchants = enchanter != null ?
                 EnchantmentAPI.getAllValidEnchants(item, enchanter)
                 : EnchantmentAPI.getAllValidEnchants(item);
-        int totalWeight = weightOfAllEnchants(validEnchants);
+        int totalWeight = weightOfAllEnchants(validEnchants) * 2;
 
         int level;
         int max = 0;

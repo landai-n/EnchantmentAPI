@@ -355,22 +355,6 @@ public class EListener implements Listener {
         event.getInventory().setItem(0, null);
         event.getEnchantsToAdd().clear();
 
-        // Random name generation
-        boolean randomName = plugin.getModuleForClass(RootConfig.class).getBoolean(RootNode.ITEM_LORE);
-        if (randomName && event.getEnchanter().hasPermission(PermissionNode.NAMES.getNode())) {
-            String name = "" + ChatColor.COLOR_CHAR;
-            int random = (int)(Math.random() * 14) + 49;
-            if (random > 57) random += 39;
-            String format = plugin.getConfig().getStringList(LanguageNode.NAME_FORMAT.getFullPath()).get(0);
-            format = format.replace("{adjective}", plugin.getAdjective(result.getLevel() / 11 + 1 > 4 ? 4 : result.getLevel() / 11 + 1));
-            format = format.replace("{weapon}", plugin.getWeapon(item.getType().name()));
-            format = format.replace("{suffix}", plugin.getSuffix(result.getFirstEnchant()));
-            name += (char)random + format;
-            ItemMeta meta = item.hasItemMeta() ? item.getItemMeta() : plugin.getServer().getItemFactory().getItemMeta(item.getType());
-            meta.setDisplayName(name);
-            item.setItemMeta(meta);
-        }
-
         // Give the item
         event.getInventory().addItem(item);
 
