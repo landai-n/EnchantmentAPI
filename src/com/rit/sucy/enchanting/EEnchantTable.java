@@ -45,7 +45,11 @@ public class EEnchantTable {
     public static EnchantResult enchant(Player enchanter, ItemStack item, int enchantLevel, int maxEnchants, boolean apply) {
 
         EnchantResult result = new EnchantResult();
+        ItemStack l_enchantedItem = new ItemStack(item);
         boolean chooseEnchantment = true;
+
+        if (item.getType() == Material.BOOK)
+            l_enchantedItem.setType(Material.ENCHANTED_BOOK);
 
         //enchants added to the item
         Map<CustomEnchantment, Integer> chosenEnchantWithCost = new HashMap<CustomEnchantment, Integer>();
@@ -60,8 +64,8 @@ public class EEnchantTable {
         int max = 0;
 
         // Keep choosing enchantments as long as needed
-        while (chooseEnchantment && validEnchants.size() > 0) {
-
+        while (chooseEnchantment && validEnchants.size() > 0)
+        {
             chooseEnchantment = false;
 
             // Modify the enchantment level
@@ -122,17 +126,18 @@ public class EEnchantTable {
                 int levelCost = enchantCostEntry.getValue();
 
                 if (selectedEnchant == null) {
-                    result.setItem(item);
+                    result.setItem(l_enchantedItem);
                     return result; //And cancel event
                 }
 
-                selectedEnchant.addToItem(item, levelCost);
+                selectedEnchant.addToItem(l_enchantedItem, levelCost);
                 success = true;
             }
         }
 
         if (success)
-            result.setItem(item);
+            result.setItem(l_enchantedItem);
+
         return result;
     }
 

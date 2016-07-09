@@ -133,8 +133,12 @@ public class AnvilMechanics {
         int count = 0;
 
         // Add up the costs of each enchantment (costPerLevel * enchantLevel)
-        for (Map.Entry<CustomEnchantment, Integer> entry : EnchantmentAPI.getAllEnchantments(item).entrySet()) {
-            cost += entry.getKey().getCostPerLevel(withBook) * entry.getValue();
+        for (Map.Entry<CustomEnchantment, Integer> entry : EnchantmentAPI.getAllEnchantments(item).entrySet())
+        {
+            if (entry.getKey() == null)
+                cost += 2 * entry.getValue();
+            else
+                cost += entry.getKey().getCostPerLevel(withBook) * entry.getValue();
             count++;
         }
 
@@ -290,8 +294,8 @@ public class AnvilMechanics {
      * @param secondary supplement item
      * @return          resulting item
      */
-    static ItemStack makeItem(ItemStack primary, ItemStack secondary) {
-
+    static ItemStack makeItem(ItemStack primary, ItemStack secondary)
+    {
         // Take the type of the primary item
         ItemStack item = new ItemStack(primary.getType());
         if (primary.hasItemMeta()) item.setItemMeta(primary.getItemMeta());
@@ -310,6 +314,8 @@ public class AnvilMechanics {
             if (entry.getKey().canEnchantOnto(item)) {
                 for (Map.Entry<CustomEnchantment, Integer> e : enchants) {
 
+                    if (e.getKey() == null)
+                        continue;
                     // If they share the same enchantment, use the higher one
                     // If the levels are the same, raise it by one if it can go that high
                     if (e.getKey().name().equals(entry.getKey().name())) {

@@ -140,7 +140,7 @@ public class MainAnvil implements AnvilView
             @Override
             public void run() {
                 try {
-                    anvil.a = repairCost;
+                    anvil.a = repairCost / 2;
                     ((CraftPlayer) player).getHandle().setContainerData(anvil, 0, anvil.a);
                 }
                 catch (Exception e){

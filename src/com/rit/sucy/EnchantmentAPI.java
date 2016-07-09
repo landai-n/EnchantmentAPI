@@ -1,5 +1,11 @@
 package com.rit.sucy;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.*;
+import com.comphenix.protocol.wrappers.nbt.NbtCompound;
+import com.comphenix.protocol.wrappers.nbt.NbtFactory;
 import com.rit.sucy.Anvil.AnvilListener;
 import com.rit.sucy.commands.Commander;
 import com.rit.sucy.config.RootConfig;
@@ -30,7 +36,9 @@ import java.util.*;
  * @author  Steven Sucy
  * @version 4.3
  */
-public class EnchantmentAPI extends JavaPlugin {
+public class EnchantmentAPI extends JavaPlugin
+{
+    ProtocolManager m_protocolMgr;
 
     /**
      * A table of the custom enchantments that are registered
@@ -67,11 +75,40 @@ public class EnchantmentAPI extends JavaPlugin {
      * that extend the EnchantPlugin class
      */
     @Override
-    public void onEnable(){
+    public void onEnable()
+    {
         //When adding new commands register them in Commander and if you want to change the root command you have to change it in Commander as well
         getCommand("enchantapi").setExecutor(new Commander(this));
         registerModule(RootConfig.class, new RootConfig(this));
+
+        m_protocolMgr = ProtocolLibrary.getProtocolManager();
+        m_protocolMgr.addPacketListener(GetGlowingPacketAdapter());
         reload();
+    }
+
+    private PacketAdapter GetGlowingPacketAdapter()
+    {
+        return new PacketAdapter(this, PacketType.Play.Server.SET_SLOT, PacketType.Play.Server.WINDOW_ITEMS) {
+            @Override
+            public void onPacketSending(PacketEvent event)
+            {
+                if (event.getPacketType() == PacketType.Play.Server.SET_SLOT)
+                    addGlow(new ItemStack[] { event.getPacket().getItemModifier().read(0) });
+                else
+                    addGlow(event.getPacket().getItemArrayModifier().read(0));
+            }};
+    }
+
+    private void addGlow(ItemStack[] stacks) {
+        for (ItemStack stack : stacks) {
+            if (stack != null) {
+                // Only update those stacks that have our flag enchantment
+                if (!getAllEnchantments(stack).isEmpty()) {
+                    NbtCompound compound = (NbtCompound) NbtFactory.fromItemTag(stack);
+                    compound.put(NbtFactory.ofList("ench"));
+                }
+            }
+        }
     }
 
     /**

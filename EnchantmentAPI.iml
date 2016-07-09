@@ -52,5 +52,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="spigot-1.10-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="ProtocolLib" level="project" />
   </component>
 </module>

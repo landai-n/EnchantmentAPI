@@ -520,7 +520,8 @@ public abstract class CustomEnchantment implements Comparable<CustomEnchantment>
         if (naturalItems == null || item == null) return false;
         for (Material validItem : naturalItems)
         {
-            if (item.getType() == validItem) return true;
+            if (item.getType() == validItem)
+                return true;
         }
         return item.getType() == Material.BOOK || item.getType() == Material.ENCHANTED_BOOK;
     }

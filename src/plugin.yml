@@ -1,6 +1,7 @@
 name: EnchantmentAPI
 main: com.rit.sucy.EnchantmentAPI
 version: 4.28
+depend: [ProtocolLib]
 commands:
     enchantapi:
         description: root command

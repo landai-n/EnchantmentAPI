@@ -3,6 +3,7 @@ package com.rit.sucy.enchanting;
 import com.rit.sucy.EUpdateTask;
 import com.rit.sucy.EnchantmentAPI;
 import com.rit.sucy.config.LanguageNode;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -45,6 +46,7 @@ public class TableTask extends BukkitRunnable {
      * @param player player reference
      */
     public TableTask(Plugin plugin, Player player) {
+
         this.player = player;
         this.plugin = plugin;
 

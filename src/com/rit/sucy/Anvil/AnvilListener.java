@@ -77,6 +77,7 @@ public class AnvilListener implements Listener {
         if (tasks.containsKey(player.getName()) && custom) {
             if (tasks.get(player.getName()).getView().getInventory().getName().equals(event.getInventory().getName())) {
                 AnvilView view = tasks.get(player.getName()).getView();
+
                 ItemStack[] inputs = view.getInputSlots();
                 boolean top = event.getRawSlot() < view.getInventory().getSize();
                 if (event.getSlot() == -999) return;
@@ -108,7 +109,7 @@ public class AnvilListener implements Listener {
 
                     // Same as shift-clicking out the product
                     if (event.getRawSlot() == view.getResultSlotID() && !isFilled(event.getCursor()) && isFilled(view.getResultSlot())) {
-                        if (player.getGameMode() != GameMode.CREATIVE && (view.getRepairCost() > player.getLevel() || view.getRepairCost() >= 40)) {
+                        if (player.getGameMode() != GameMode.CREATIVE && (view.getRepairCost() > player.getLevel())) {
                             event.setCancelled(true);
                         }
                         else {
