@@ -1,0 +1,4 @@
+# EnchantmentAPI
+
+Dependencies:
+  - ProtocolLib
