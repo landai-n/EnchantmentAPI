@@ -135,11 +135,7 @@ public class RootConfig extends ModularConfig
                             {
                                 @SuppressWarnings("unchecked")
                                 List<String> stringList = (List<String>) obj;
-                                Material[] l_tmp = MaterialsParser.toMaterial(stringList.toArray(new String[stringList.size()]));
-                                Material[] materials = new Material[l_tmp.length + 1];
-                                System.arraycopy(l_tmp, 0, materials, 0, l_tmp.length);
-                                materials[l_tmp.length] = Material.ELYTRA;
-                                enchantment.setNaturalMaterials(materials);
+                                enchantment.setNaturalMaterials(MaterialsParser.toMaterial(stringList.toArray(new String[stringList.size()])));
                             }
                             break;
                         case WEIGHT:

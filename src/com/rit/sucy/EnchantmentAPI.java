@@ -103,7 +103,14 @@ public class EnchantmentAPI extends JavaPlugin
         for (ItemStack stack : stacks) {
             if (stack != null) {
                 // Only update those stacks that have our flag enchantment
-                if (!getAllEnchantments(stack).isEmpty()) {
+                if (!getAllEnchantments(stack).isEmpty())
+                {
+                    Map<CustomEnchantment, Integer> l_enchantMap = getAllEnchantments(stack);
+
+                    for (CustomEnchantment l_enchant : l_enchantMap.keySet())
+                        if (VanillaEnchantment.class.isAssignableFrom(l_enchant.getClass()))
+                            return;
+
                     NbtCompound compound = (NbtCompound) NbtFactory.fromItemTag(stack);
                     compound.put(NbtFactory.ofList("ench"));
                 }

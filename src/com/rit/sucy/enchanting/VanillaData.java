@@ -52,7 +52,7 @@ public enum VanillaData
      */
     DIG_SPEED(Enchantment.DIG_SPEED, ItemSets.TOOLS.getItems(),
             new String[] { SuffixGroups.DIGGING.getKey() }, 10, 1, 10, 5),
-    DURABILITY(Enchantment.DURABILITY, ItemSets.TOOLS.getItems(),
+    DURABILITY(Enchantment.DURABILITY, ItemSets.ALL.getItems(),
             new String[] { SuffixGroups.DURABILITY.getKey() }, 5, 5, 8, 3),
     LOOT_BONUS_BLOCKS(Enchantment.LOOT_BONUS_BLOCKS, ItemSets.TOOLS.getItems(), "Block_Modifier",
             new String[] { SuffixGroups.DIGGING.getKey(), SuffixGroups.LOOT.getKey() }, 2, 15, 9, 3),

@@ -53,34 +53,6 @@ public enum ItemSets {
             Material.DIAMOND_BOOTS
     }),
 
-    HELMETS (new Material[] {
-            Material.LEATHER_HELMET,
-            Material.CHAINMAIL_HELMET,
-            Material.IRON_HELMET,
-            Material.GOLD_HELMET,
-            Material.DIAMOND_HELMET,
-    }),
-
-    CHESTPLATES (new Material[] {
-            Material.LEATHER_CHESTPLATE,
-            Material.CHAINMAIL_CHESTPLATE,
-            Material.IRON_CHESTPLATE,
-            Material.GOLD_CHESTPLATE,
-            Material.DIAMOND_CHESTPLATE,
-    }),
-
-    BOOTS (new Material[] {
-            Material.LEATHER_BOOTS,
-            Material.CHAINMAIL_BOOTS,
-            Material.IRON_BOOTS,
-            Material.GOLD_BOOTS,
-            Material.DIAMOND_BOOTS
-    }),
-
-    BOW (new Material[] {
-            Material.BOW
-    }),
-
     ALL (new Material[] {
             Material.WOOD_SWORD,
             Material.STONE_SWORD,
@@ -123,7 +95,36 @@ public enum ItemSets {
             Material.GOLD_BOOTS,
             Material.DIAMOND_BOOTS,
             Material.BOW,
-            Material.FISHING_ROD
+            Material.FISHING_ROD,
+            Material.ELYTRA
+    }),
+
+    HELMETS (new Material[] {
+            Material.LEATHER_HELMET,
+            Material.CHAINMAIL_HELMET,
+            Material.IRON_HELMET,
+            Material.GOLD_HELMET,
+            Material.DIAMOND_HELMET,
+    }),
+
+    CHESTPLATES (new Material[] {
+            Material.LEATHER_CHESTPLATE,
+            Material.CHAINMAIL_CHESTPLATE,
+            Material.IRON_CHESTPLATE,
+            Material.GOLD_CHESTPLATE,
+            Material.DIAMOND_CHESTPLATE,
+    }),
+
+    BOOTS (new Material[] {
+            Material.LEATHER_BOOTS,
+            Material.CHAINMAIL_BOOTS,
+            Material.IRON_BOOTS,
+            Material.GOLD_BOOTS,
+            Material.DIAMOND_BOOTS
+    }),
+
+    BOW (new Material[] {
+            Material.BOW
     })
 
     ;
