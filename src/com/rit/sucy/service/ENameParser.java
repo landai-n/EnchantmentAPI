@@ -1,5 +1,6 @@
 package com.rit.sucy.service;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -42,6 +43,8 @@ public class ENameParser {
         if (!lore.contains(" ")) return 0;
 
         String[] pieces = lore.split(" ");
+        if (NumberUtils.isNumber(pieces[pieces.length - 1]))
+            return Integer.parseInt(pieces[pieces.length - 1]);
         return ERomanNumeral.getValueOf(pieces[pieces.length - 1]);
     }
 

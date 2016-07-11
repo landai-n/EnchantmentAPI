@@ -35,6 +35,7 @@ import java.util.Map;
 public abstract class CustomEnchantment implements Comparable<CustomEnchantment>
 {
 
+    protected boolean RomanNumber = true;
     /**
      * Default group that doesn't conflict with any other enchantments
      */
@@ -612,7 +613,7 @@ public abstract class CustomEnchantment implements Comparable<CustomEnchantment>
             {
                 if (entry.getValue() < enchantLevel)
                 {
-                    metaLore.remove(ChatColor.GRAY + name() + " " + ERomanNumeral.numeralOf(entry.getValue()));
+                    metaLore.remove(ChatColor.GRAY + name() + " " + ((RomanNumber) ? ERomanNumeral.numeralOf(entry.getValue()) : entry.getValue().toString()));
                 }
                 else
                 {
@@ -622,7 +623,7 @@ public abstract class CustomEnchantment implements Comparable<CustomEnchantment>
         }
 
         // Add the enchantment
-        metaLore.add(0, ChatColor.GRAY + enchantName + " " + ERomanNumeral.numeralOf(enchantLevel));
+        metaLore.add(0, ChatColor.GRAY + enchantName + " " + ((RomanNumber) ? ERomanNumeral.numeralOf(enchantLevel) : Integer.toString(enchantLevel)));
         meta.setLore(metaLore);
         String name = ENameParser.getName(item);
         if (name != null) meta.setDisplayName(name);
@@ -648,10 +649,10 @@ public abstract class CustomEnchantment implements Comparable<CustomEnchantment>
         for (Map.Entry<CustomEnchantment, Integer> entry : EnchantmentAPI.getEnchantments(item).entrySet())
         {
             if (entry.getKey().name().equals(name()))
-            {
-                metaLore.remove(ChatColor.GRAY + name() + " " + ERomanNumeral.numeralOf(entry.getValue()));
-            }
+                metaLore.remove(ChatColor.GRAY + name() + " " + (RomanNumber ? ERomanNumeral.numeralOf(entry.getValue()) : entry.getValue().toString()));
         }
+        meta.setLore(metaLore);
+        item.setItemMeta(meta);
         return item;
     }
 
